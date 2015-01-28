@@ -2,7 +2,7 @@ window._storage = new(function CembriStorage() {
     this.status = 'idle';
     this.storageType = 'localStorage';
     this.result = [];
-    this.debug = false;
+    this.debug = true;
     this.encryption = true;
 
 
@@ -29,6 +29,18 @@ window._storage = new(function CembriStorage() {
         if (this.debug) console.info('Retrieve ' + key);
 
         if (typeof (callback) == 'function') callback(storage.data);
+    }
+    
+    CembriStorage.prototype.check = function (key) {
+        var exists = true;
+        if (this.encryption) key = btoa(key);
+        var storage = window[this.storageType].getItem(key);
+        
+        if(storage == null) exists = false;
+        
+        if (this.debug) console.info('Check ' + atob(key) + " is " + exists);
+        
+        return exists;
     }
 
     return this;
