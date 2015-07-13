@@ -6,6 +6,15 @@ window.arstorage = new (function CembriStorage() {
     this.encryption = true;
     this.maxAge = 30 * 60 * 1000;
 
+    CembriStorage.prototype.setDebug = function (value) {
+        this.debug = value;
+    }
+    CembriStorage.prototype.setEncryption = function (value) {
+        this.encryption = value;
+    }
+    CembriStorage.prototype.setMaxAge = function (value) {
+        this.debug = value * 1000;
+    }
 
     CembriStorage.prototype.set = function (key, value, callback) {
         var storage = {
