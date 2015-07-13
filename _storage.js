@@ -1,8 +1,8 @@
-window._storage = new (function CembriStorage() {
+window.arstorage = new (function CembriStorage() {
     this.status = 'idle';
     this.storageType = 'localStorage';
     this.result = [];
-    this.debug = true;
+    this.debug = false;
     this.encryption = true;
     this.maxAge = 30 * 60 * 1000;
 
